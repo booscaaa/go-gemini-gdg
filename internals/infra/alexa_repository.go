@@ -1,0 +1,5 @@
+package infra
+
+func NewAlexaRepository() {
+
+}

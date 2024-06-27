@@ -1,0 +1,36 @@
+services:
+  postgres:
+    restart: always
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: alexa
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres-alexa:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - backend-alexa
+
+  pgadmin:
+    container_name: pgadmin4
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - pgadmin-alexa:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+    networks:
+      - backend-alexa
+
+networks: 
+  backend-alexa:
+    driver: bridge
+
+volumes:
+  pgadmin-alexa:
+  postgres-alexa:
