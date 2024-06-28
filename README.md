@@ -16,14 +16,6 @@ Este projeto incorpora uma habilidade customizada da Alexa chamada "Prato Rápid
 
 O principal objetivo deste sistema é facilitar o acesso e a gestão de informações de produtos de forma rápida e eficiente, utilizando a tecnologia de voz da Alexa para melhorar a experiência do usuário e aumentar a eficácia operacional.
 
-## Como Contribuir
-
-Estamos abertos a contribuições! Se você tem interesse em melhorar o sistema ou sugerir novas funcionalidades, sinta-se à vontade para criar um pull request ou abrir um issue.
-
-## Licença
-
-Este projeto está licenciado sob a Licença MIT. Veja o arquivo LICENSE para mais detalhes.
-
 
 # Fluxo de Interação com Alexa
 
@@ -118,6 +110,72 @@ Ambos os componentes enviam comandos para o `ProductUseCase`.
 
 Esta arquitetura promove a separação de preocupações, dividindo claramente as responsabilidades entre os componentes e melhorando a manutenção e escalabilidade da aplicação.
 
+# Projeto Docker
+
+Este é um guia para rodar o projeto usando Docker. O projeto inclui dois serviços, `service-1` e `service-2`, um banco de dados PostgreSQL e a interface de administração do PostgreSQL, pgAdmin.
+
+## Pré-requisitos
+
+- Docker instalado: [Docker Download](https://www.docker.com/products/docker-desktop)
+- Docker Compose instalado: [Docker Compose Installation](https://docs.docker.com/compose/install/)
+
+## Passos para Rodar o Projeto
+
+1. **Clone o repositório**
+
+    Clone o repositório do projeto para o seu ambiente local.
+
+    ```sh
+    git clone git@github.com:booscaaa/go-gemini-gdg.git
+    cd go-gemini-gdg.git
+    ```
+
+2. **Estrutura do Projeto**
+
+    Certifique-se de que sua estrutura de diretórios se pareça com isso:
+
+    ```bash
+    ├── api
+    │   ├── Dockerfile.service1
+    │   ├── Dockerfile.service2
+    │   └── ...
+    ├── docker-compose.yml
+    └── ...
+    ```
+
+3. **Construir e Iniciar os Serviços**
+
+    Na raiz do projeto, execute o comando abaixo para construir e iniciar os serviços Docker definidos no docker-compose.yml:
+
+    ```sh
+    docker-compose up --build
+    ```
 
 
+4. **Acessar os Serviços**
 
+    - Service-1 estará disponível em: http://localhost:8000
+    - pgAdmin estará disponível em: http://localhost:5050
+    - Para acessar o pgAdmin, use as credenciais:
+      - Email: admin@admin.com
+      - Senha: admin
+
+5. **Conectando ao PostgreSQL no pgAdmin**
+
+    Após acessar o pgAdmin:
+
+    - Adicione um novo servidor.
+    - Use as seguintes informações:
+      - Nome: postgres
+      - Host: postgres
+      - Porta: 5432
+      - Nome do usuário: postgres
+      - Senha: postgres
+
+## Como Contribuir
+
+Estamos abertos a contribuições! Se você tem interesse em melhorar o sistema ou sugerir novas funcionalidades, sinta-se à vontade para criar um pull request ou abrir um issue.
+
+## Licença
+
+Este projeto está licenciado sob a Licença MIT. Veja o arquivo LICENSE para mais detalhes.
