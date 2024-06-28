@@ -6,7 +6,7 @@ import (
 )
 
 func Initialize() *sqlx.DB {
-	db, err := sqlx.Connect("pgx", "postgres://postgres:postgres@localhost:5432/alexa")
+	db, err := sqlx.Connect("pgx", "postgres://postgres:postgres@postgres:5432/alexa")
 
 	if err != nil {
 		panic(err)

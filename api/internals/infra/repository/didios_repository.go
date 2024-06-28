@@ -24,7 +24,7 @@ func (repository *didiosRepository) FindProducts(context.Context) ([]domain.Prod
 	products := []domain.Product{}
 
 	browser, err := repository.scrapper.Chromium.Launch(playwright.BrowserTypeLaunchOptions{
-		Headless: playwright.Bool(false),
+		Headless: playwright.Bool(true),
 	})
 	if err != nil {
 		return nil, err

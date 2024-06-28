@@ -1,0 +1,15 @@
+FROM golang:1.22.3
+
+WORKDIR /api
+
+RUN go install github.com/playwright-community/playwright-go/cmd/playwright@latest
+RUN playwright install --with-deps
+
+ENV DOCKERIZE_VERSION v0.6.1
+RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && tar -C /usr/local/bin -xzvf dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+
+ENTRYPOINT ["dockerize", "-wait", "tcp://postgres:5432", "-timeout", "50s"]
+
+CMD go run cmd/main.go update-price

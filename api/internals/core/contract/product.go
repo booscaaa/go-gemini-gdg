@@ -6,7 +6,6 @@ import (
 
 	"github.com/booscaaa/go-gemini-gdg/api/internals/core/domain"
 	"github.com/booscaaa/go-gemini-gdg/api/internals/core/dto"
-	"github.com/spf13/cobra"
 )
 
 type ProductScraperRepository interface {
@@ -36,5 +35,5 @@ type ProductController interface {
 }
 
 type ProductCLI interface {
-	SeedProducts(*cobra.Command, []string)
+	SeedProducts(context.Context)
 }

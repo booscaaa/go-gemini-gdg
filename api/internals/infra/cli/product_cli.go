@@ -1,12 +1,12 @@
 package cli
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"text/tabwriter"
 
 	"github.com/booscaaa/go-gemini-gdg/api/internals/core/contract"
-	"github.com/spf13/cobra"
 )
 
 type productCLI struct {
@@ -14,8 +14,8 @@ type productCLI struct {
 }
 
 // SeedProducts implements contract.ProductCLI.
-func (cli *productCLI) SeedProducts(cmd *cobra.Command, args []string) {
-	products, err := cli.productScraperUseCase.SeedProducts(cmd.Context())
+func (cli *productCLI) SeedProducts(ctx context.Context) {
+	products, err := cli.productScraperUseCase.SeedProducts(ctx)
 	if err != nil {
 		panic(err)
 	}

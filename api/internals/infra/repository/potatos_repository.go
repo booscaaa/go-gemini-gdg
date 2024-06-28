@@ -24,7 +24,7 @@ func (repository *potatosRepository) FindProducts(context.Context) ([]domain.Pro
 	products := []domain.Product{}
 
 	browser, err := repository.scrapper.Chromium.Launch(playwright.BrowserTypeLaunchOptions{
-		Headless: playwright.Bool(false),
+		Headless: playwright.Bool(true),
 	})
 	if err != nil {
 		return nil, err

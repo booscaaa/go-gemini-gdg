@@ -1,4 +1,30 @@
 services:
+  service-1:
+    container_name: service-1
+    build:
+      context: "./api"
+      dockerfile: Dockerfile.service1
+    volumes:
+      - ./api:/api
+    ports:
+      - 8000:8000
+    depends_on: 
+      - postgres
+    networks:
+      - backend-alexa
+
+  service-2:
+    container_name: service-2
+    build:
+      context: "./api"
+      dockerfile: Dockerfile.service2
+    volumes:
+      - ./api:/api
+    depends_on: 
+      - postgres
+    networks:
+      - backend-alexa
+
   postgres:
     restart: always
     image: postgres:latest
